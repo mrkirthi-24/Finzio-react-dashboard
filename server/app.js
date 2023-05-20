@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
+import kpiRoutes from "./routes/kpi.js";
 
 // CONFIGURATIONS
 dotenv.config();
@@ -16,6 +17,9 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+
+//ROUTES
+app.use("/kpi", kpiRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 5000;
