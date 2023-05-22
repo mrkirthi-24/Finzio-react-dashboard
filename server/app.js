@@ -6,6 +6,8 @@ import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import kpiRoutes from "./routes/kpi.js";
+import KPI from "./models/KPI.js";
+import { kpis } from "./data/data.js";
 
 // CONFIGURATIONS
 dotenv.config();
@@ -30,5 +32,9 @@ mongoose
   })
   .then(async () => {
     app.listen(PORT, () => console.log(`Server running on Port: ${PORT}...`));
+
+    // To avoid duplicate data || Add data one time only or when needed // only recommended for development not for production
+    // await mongoose.connection.db.dropDatabase();
+    // KPI.insertMany(kpis);
   })
   .catch((err) => console.log(`${err} Failed to connect...`));
