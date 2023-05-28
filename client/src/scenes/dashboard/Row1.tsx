@@ -200,7 +200,7 @@ const Row1 = () => {
 
       <DashboardBox gridArea="c">
         <BoxHeader
-          title="Revenue Month by Month "
+          title="Revenue Month on Month "
           subtitle="graph representating revenue month by month"
           sideText="+8%"
         />
