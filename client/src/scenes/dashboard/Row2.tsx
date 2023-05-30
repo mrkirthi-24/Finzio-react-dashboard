@@ -3,9 +3,7 @@ import { useTheme } from "@emotion/react";
 import { useGetKpisQuery } from "@/state/api";
 import { useMemo } from "react";
 
-type Props = {};
-
-const Row2 = (props: Props) => {
+const Row2 = () => {
   const { palette } = useTheme();
   const { data: operationalData } = useGetKpisQuery();
 
