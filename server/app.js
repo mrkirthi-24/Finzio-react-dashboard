@@ -7,7 +7,9 @@ import helmet from "helmet";
 import dotenv from "dotenv";
 import kpiRoutes from "./routes/kpi.js";
 import KPI from "./models/KPI.js";
-import { kpis } from "./data/data.js";
+import { kpis, products } from "./data/data.js";
+import productRoutes from "./routes/product.js";
+import Product from "./models/Product.js";
 
 // CONFIGURATIONS
 dotenv.config();
@@ -22,6 +24,7 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
 //ROUTES
 app.use("/kpi", kpiRoutes);
+app.use("/product", productRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 5000;
@@ -36,5 +39,6 @@ mongoose
     // To avoid duplicate data || Add data one time only or when needed // only recommended for development not for production
     // await mongoose.connection.db.dropDatabase();
     // KPI.insertMany(kpis);
+    // Product.insertMany(products);
   })
   .catch((err) => console.log(`${err} Failed to connect...`));
