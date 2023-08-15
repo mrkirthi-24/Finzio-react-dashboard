@@ -4,11 +4,9 @@ import ApiIcon from "@mui/icons-material/Api";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
+  const [selected, setSelected] = useState("Dashboard");
   const { palette } = useTheme(); //Accessing palette object from themeSettings using useTheme() hook
-  const [selected, setSelected] = useState("dashboard");
 
   return (
     //FlexBetween is user defined reusable component
@@ -19,34 +17,52 @@ const Navbar = (props: Props) => {
           FinZio
         </Typography>
       </FlexBetween>
-
       <FlexBetween gap="2rem">
-        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
-          <Link
-            to="/"
-            onClick={() => setSelected("dashboard")}
-            style={{
-              color: selected === "dashboard" ? "inherit" : palette.grey[700],
-              textDecoration: "inherit",
-            }}
-          >
-            DashBoard
-          </Link>
-        </Box>
-        <Box>
-          <Link
-            to="/predictions"
-            onClick={() => setSelected("predictions")}
-            style={{
-              color: selected === "predictions" ? "inherit" : palette.grey[700],
-              textDecoration: "inherit",
-            }}
-          >
-            Predictions
-          </Link>
-        </Box>
+        <NavLink
+          to="/"
+          label="Dashboard"
+          selected={selected}
+          setSelected={setSelected}
+        />
+        <NavLink
+          to="/predictions"
+          label="Predictions"
+          selected={selected}
+          setSelected={setSelected}
+        />
       </FlexBetween>
     </FlexBetween>
+  );
+};
+
+interface NavLinkProps {
+  to: string;
+  label: string;
+  selected: string;
+  setSelected: (selected: string) => void;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({
+  to,
+  selected,
+  setSelected,
+  label,
+}) => {
+  const { palette } = useTheme();
+  console.log(selected);
+  return (
+    <Box sx={{ "&:hover": { color: palette.primary[100], fontWeight: 600 } }}>
+      <Link
+        to={to}
+        onClick={() => setSelected(label)}
+        style={{
+          color: selected === label ? "inherit" : palette.grey[700],
+          textDecoration: "inherit",
+        }}
+      >
+        {label}
+      </Link>
+    </Box>
   );
 };
 

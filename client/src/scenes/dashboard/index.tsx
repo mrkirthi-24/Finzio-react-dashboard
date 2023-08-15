@@ -63,7 +63,8 @@ const DashBoard = () => {
       sx={
         aboveMedScreens
           ? {
-              gridTemplateColumns: "repeat(3, minmax(370px, 1fr))", //So this will make columns min 370px and max 1 full-frag
+              //So this will make columns min 370px and max 1 full-frag
+              gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
               gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
               gridTemplateAreas: gridTemplateLargeScreens,
             }
