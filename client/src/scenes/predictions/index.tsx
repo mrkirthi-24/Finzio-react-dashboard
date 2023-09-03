@@ -1,9 +1,9 @@
-import React from "react";
-
-type Props = {};
-
-const Predictions = (props: Props) => {
-  return <div>Predictions</div>;
+const Predictions = () => {
+  return (
+    <div style={{ color: "white" }}>
+      Predictions for the data are comming soon...
+    </div>
+  );
 };
 
 export default Predictions;
