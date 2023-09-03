@@ -49,7 +49,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   label,
 }) => {
   const { palette } = useTheme();
-  console.log(selected);
+
   return (
     <Box sx={{ "&:hover": { color: palette.primary[100], fontWeight: 600 } }}>
       <Link
