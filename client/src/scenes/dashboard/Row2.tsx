@@ -1,5 +1,5 @@
 import DashboardBox from "@/components/DashboardBox";
-import { useTheme } from "@emotion/react";
+import { useTheme } from "@mui/material";
 import { useGetProductsQuery, useGetKpisQuery } from "@/state/api";
 import { useMemo } from "react";
 import {
